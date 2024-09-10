@@ -13,12 +13,16 @@
   </thead>
   <tbody>
     @for(b of brouettes; track b){
-      <tr>
+      <tr [ngClass]="{'gris': b.quantite === 0}">
         <th scope="row">{{ b.nom }}</th>
         <td>{{ b.description }}</td>
         <td>{{ b.prix }}</td>
         <td>{{ b.quantite }}</td>
-        <td><button type="button" (click)="onClick(b)"><ng-content></ng-content></button></td>
+        <td>
+          <button type="button" (click)="onClick(b)">
+            <ng-container [ngTemplateOutlet]="affichage"></ng-container>
+          </button>
+        </td>
       </tr>
     }
   </tbody>

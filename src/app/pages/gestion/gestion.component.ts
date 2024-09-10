@@ -32,19 +32,12 @@ export class GestionComponent {
   })
 
   saveBrouette() {
-    if (this.brouetteService.brouettes.includes(this.brouette_form.value as Brouette)) {
-      const index: number = this.brouetteService.brouettes.indexOf(this.brouette_form.value as Brouette)
-      this.brouetteService.brouettes[index].quantite += this.brouette_form.value.quantite || 0;
-    } else {
-      this.brouetteService.brouettes.push(this.brouette_form.value as Brouette);
-
-    }
-    // localStorage.setItem('brouettes', JSON.stringify(this.brouetteService.brouettes))
+    this.brouetteService.addBrouette(this.brouette_form.value as Brouette);
   }
 
   delete(brouetteToDelete: Brouette) {
-    const index = this.brouetteService.brouettes.indexOf(brouetteToDelete)
-    this.brouetteService.brouettes.splice(index, 1);
+    this.brouetteService.removeBrouette(brouetteToDelete);
+
   }
 
 }

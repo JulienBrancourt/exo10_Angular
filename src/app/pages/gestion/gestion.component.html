@@ -28,8 +28,12 @@
 </section>
 
 <section>
-  <app-tableau [brouettes]="brouettes" (clickButton)="delete($event)">blablablabla</app-tableau>
+  <app-tableau [brouettes]="brouettes" [affichage]="AfficherSuppr" (clickButton)="delete($event)"></app-tableau>
 </section>
+
+<ng-template #AfficherSuppr>
+  <div>Supprimer</div>
+</ng-template>
 
 
 

@@ -16,6 +16,7 @@ import {BrouetteService} from "../../utils/services/brouette.service";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  search: string = '';
 
   constructor(private brouetteService: BrouetteService) {
     this.brouettes = brouetteService.brouettes;
@@ -24,8 +25,10 @@ export class HomeComponent {
   brouettes: Brouette[] = [];
 
   addToCard(brouetteToAddToCard: Brouette) {
-    console.log(`Home - brouette cliqué: ${brouetteToAddToCard}`)
-    this.brouetteService.brouettePanier.push(brouetteToAddToCard);
-    console.log(this.brouetteService.brouettePanier);
+    this.brouetteService.addBrouettePanier(brouetteToAddToCard);
+  }
+
+  sortByPrice(){
+    this.brouettes.sort((a, b) => a.prix - b.prix);
   }
 }
